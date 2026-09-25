@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Virtual Market Simulator</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="topbar">
+        <div>
+          <p class="eyebrow">SIMULATOR</p>
+          <h1>Virtual Market</h1>
+        </div>
+        <div class="topbar-actions">
+          <div class="mode-switcher" aria-label="Market mode selector">
+            <button class="mode-btn active" data-mode="live">Live</button>
+            <button class="mode-btn" data-mode="delayed">Delayed</button>
+            <button class="mode-btn" data-mode="replay">Replay</button>
+          </div>
+          <div class="clock-block">
+            <span>Market clock</span>
+            <strong id="market-clock">--:--:--</strong>
+          </div>
+        </div>
+      </header>
+
+      <main class="dashboard">
+        <section class="overview-grid">
+          <article class="panel summary-card accent-blue">
+            <span>Account Value</span>
+            <h2 id="account-value">$0.00</h2>
+            <small id="account-pnl">+$0.00</small>
+          </article>
+          <article class="panel summary-card accent-green">
+            <span>Cash</span>
+            <h2 id="cash-balance">$0.00</h2>
+            <small>Available to trade</small>
+          </article>
+          <article class="panel summary-card accent-purple">
+            <span>Invested</span>
+            <h2 id="invested-value">$0.00</h2>
+            <small id="positions-count">0 positions</small>
+          </article>
+          <article class="panel summary-card accent-orange">
+            <span>Market Mood</span>
+            <h2 id="market-mood">Neutral</h2>
+            <small id="market-status">Open</small>
+          </article>
+        </section>
+
+        <section class="content-grid">
+          <div class="left-stack">
+            <section class="panel">
+              <div class="section-header">
+                <h3>Market Watch</h3>
+                <select id="market-filter">
+                  <option value="all">All markets</option>
+                  <option value="US">US</option>
+                  <option value="INDIA">India</option>
+                  <option value="GLOBAL">Global</option>
+                  <option value="CRYPTO">Crypto</option>
+                  <option value="FOREX">Forex</option>
+                  <option value="COMMODITY">Commodities</option>
+                </select>
+              </div>
+              <div id="watchlist" class="watchlist"></div>
+            </section>
+
+            <section class="panel">
+              <div class="section-header">
+                <h3>Portfolio</h3>
+                <button id="reset-button" class="ghost-btn">Reset</button>
+              </div>
+              <div id="portfolio" class="portfolio-list"></div>
+            </section>
+          </div>
+
+          <aside class="right-stack">
+            <section class="panel trade-panel">
+              <div class="section-header">
+                <h3>Trade</h3>
+                <span id="selected-symbol-tag" class="symbol-tag">AAPL</span>
+              </div>
+
+              <div class="trade-form">
+                <label>
+                  Symbol
+                  <input id="symbol-input" type="text" value="AAPL" />
+                </label>
+
+                <label>
+                  Quantity
+                  <input id="qty-input" type="number" min="1" value="10" />
+                </label>
+
+                <label>
+                  Order type
+                  <select id="order-type">
+                    <option value="buy">Buy</option>
+                    <option value="sell">Sell</option>
+                  </select>
+                </label>
+
+                <button id="submit-order" class="primary-btn">Execute Order</button>
+              </div>
+            </section>
+
+            <section class="panel">
+              <div class="section-header">
+                <h3>Trade Activity</h3>
+              </div>
+              <div id="trade-history" class="history-list"></div>
+            </section>
+          </aside>
+        </section>
+      </main>
+    </div>
+
+    <script src="app.js"></script>
+  </body>
+</html>
